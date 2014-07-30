@@ -1,0 +1,129 @@
+size = 640 480
+
+define Moon 
+	draw Circle 
+		position = 50 50
+		color = 255 255 0 
+		radius = 50
+	done
+
+	draw Circle 
+		position = 0 50
+		color = 0 0 0 
+		radius = 50
+	done
+done
+
+define Tree
+
+	draw Rectangle
+		position = 0 250
+		color = 160 80 80
+		size = 50 150 	
+	done
+	
+	draw Circle
+		position = 25 200
+		color = 0 200 0
+		radius = 70
+	done
+
+done
+
+
+define Window
+	draw Rectangle
+		position = 0 0
+		size = 60 60
+		color = 80 40 40
+	done
+
+	draw Rectangle
+		position = 5 5
+		size = 50 50
+		color = 50 50 100
+	done
+
+	draw Rectangle
+		position = 25 0
+		size = 10 60
+		color = 80 40 40
+	done
+
+	draw Rectangle
+		position = 0 25
+		size = 60 10
+		color = 80 40 40
+	done
+done
+
+
+define Door
+	draw Rectangle
+		position = 0 0
+		size = 50 100 
+		color = 80 40 40
+	done
+
+	draw Circle
+		position = 40 50
+		color = 100 100 0
+		radius = 5
+	done
+done
+
+define House
+
+	draw Rectangle
+		position = 0 0
+		size = 250 50
+		color = 150 50 50
+	done
+
+	draw Rectangle
+		position = 30 -20
+		size = 20 30
+		color = 100 100 100
+	done
+
+	draw Rectangle
+		position = 0 50
+		size = 250 150
+		color = 100 100 100
+	done
+
+	draw Door
+		position = 150 100
+	done
+
+	draw Window
+		position = 30 80
+	done
+done
+
+draw Rectangle
+	position = 0 400
+	color = 100 200 100
+	size = 640 80 	
+done
+
+
+draw House
+	position = 20 250
+done
+
+draw Moon
+	position = 50 50
+done
+
+draw Tree 
+	position = 350 50
+done
+
+draw Tree
+	position = 450 70
+done
+
+draw Tree
+	position = 550 20
+done

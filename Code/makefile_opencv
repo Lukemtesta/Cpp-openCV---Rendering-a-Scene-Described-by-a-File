@@ -1,0 +1,44 @@
+# Skeleton makefile for using OpenCV front-end
+# (doesn't seem to be installed on the labs' computers, you can install it on your own machine though)
+
+# use the following to indicate the location of OpenCV libraries and header files
+OPENCV_INC_DIR = /opt/include
+OPENCV_LIB_DIR = /opt/lib
+
+CXX = g++
+
+# for optimised build comment the first line and uncomment the second
+# for debugging, comment the second line and uncomment the first
+CXXFLAGS =	-ggdb -g3 -O0 -DUSE_OPENCV
+#CXXFLAGS =	-O3 -Wall
+
+
+# compilation flags, you won't need to change this
+CPPFLAGS = -Wall -fmessage-length=0 -I$(OPENCV_INC_DIR)
+LDFLAGS = -L$(OPENCV_LIB_DIR)
+
+# (CHANGE THIS!) add here any additional module you have written
+OBJS =		SkeletonMain.o OpenCVDisplay.o
+
+# (CHANGE THIS!) add here any header file that you have written (optional)
+HDRS = 		OpenCVDisplay.h
+
+# libraries to be linked, these ones are required for the OpenCV display
+LIBS =		-lopencv_highgui -lopencv_core
+
+# name of the program to build
+TARGET =	SkeletonCPP2013
+
+# main linking
+$(TARGET):	$(OBJS) $(HDRS)
+	$(CXX) -o $(TARGET) $(OBJS) $(LIBS) $(LDFLAGS)
+
+# Note: the makefile is using an implicit rule in this case for building 
+# all the .o files 
+
+# build everything
+all:	$(TARGET)
+
+# cleanup source by removing .o files
+clean:
+	rm $(OBJS) $(TARGET)

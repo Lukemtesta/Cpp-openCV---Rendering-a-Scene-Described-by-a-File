@@ -1,0 +1,316 @@
+<html><head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<title>Design Specification</title>
+
+<style type="text/css" media="all">
+@import "course.css";
+</style>
+
+</head>
+
+<body>
+
+<div id="preload">
+   <img src="Design Specification/skeleton_image.png" alt="Output of the skeleton program" height="1" width="1">
+   <img src="Design Specification/circles.png" alt="Output of the circles example" height="1" width="1">
+   <img src="Design Specification/rectangles.png" alt="Output of the rectangles example" height="1" width="1">
+   <img src="Design Specification/definition.png" alt="Output of the definition example" height="1" width="1">
+   <img src="Design Specification/complex_scene.png" alt="Output of the complex_scene example" height="1" width="1">
+</div>
+
+<p align="center"><font color="000000" face="Arial"><strong><big><big>Module EEE3013 Assignment, year 2013/2014</big></big></strong></font></p>
+
+<h1>Simple scene interpreter</h1>
+
+<h4> 
+Note: The web server is acting weird, so sometimes the images wont load,
+ you may need to reload the page. There is also a link next to all of 
+them if they keep 
+on not appearing
+</h4>
+
+
+<h4> 
+<a href="http://personal.ee.surrey.ac.uk/Personal/N.Pugeault/cpp/assignment/class_diagram.svg">
+<font color="#AA0000">
+Here is my design:
+</font>
+<br>
+<img src="Design Specification/class_diagram.png" width="800">
+</a>
+</h4>
+
+<h2>The assignment: how it is going to work?</h2>
+This assignment will be done <b>in groups of three</b>, and will consist
+ of three parts: the design, the implementation and the demonstration of
+ your program. 
+You are provided with a program specification and some base code (see 
+below) and you will have to devise and program a solution using your C++
+ skills. 
+
+<h3>Design</h3> 
+In the first part, you will be asked to provide a design for your solution. 
+A good design will be <b>concise</b>, clear, and make appropriate use of classes and inheritance, and have well defined classes with clear interactions. 
+The design will be handed in in paper version at the TSO on <b>Tuesday 26th of November before 4pm</b>
+ (this is a strict deadline). 
+I will then provide you on the following Friday with a possible design, 
+and you are free to keep your design, amend it, or take mine instead. 
+
+<h3>Implementation</h3>
+<p>
+The second part will be the implementation of your solution in C++. A 
+good implementation will handle errors with exceptions, provide error 
+messages and exit gracefully 
+when unsolvable errors occur, be well commented, and make best use of 
+C++ facilities. Bad memory management or leaks, use of C-style code, bad
+ structuring 
+of the code in modules and classes will be penalised. Also, the program 
+should accept the name of the scene file to process as a command line 
+parameter, providing clear
+error messages.  
+</p>
+<p>
+You will hand in a compact printout of your code at the TSO on <b>Tuesday 17th of December before 4pm</b> (and yes, this is also a strict deadline). 
+These will be evaluate and marked for style of programming only. 
+</p>
+
+<h3>Demonstration</h3>
+You will then have an opportunity to demonstrate you code's functionality during the last lab, on <b>Friday 20th of December</b>.
+ Expect the demonstrator to test your 
+code with different scene files, some of them broken, to test the 
+robustness and error reporting. Make sure that at least one of your 
+group is there, as this is your 
+only opportunity to demonstrate your work. 
+
+
+<h2>Specification of the program</h2>
+<p> 
+You are asked to write a C++ program that can read scene description 
+files in a specified text format, and display a graphical representation
+ of the scene
+on the screen. The scenes are described using a combination of simple 
+primitives, such as <tt>Circle</tt> and <tt>Rectangle</tt>, and by 
+defining new shapes 
+as combinations of existing ones. Drawing on the screen will be handled 
+by a simple class that is provided to you, along with an example 
+program. 
+</p>
+The final program should: 
+<ul>
+<li>take as a command-line parameter the name of the scene description 
+file to display (send a clear error message if no file was provided or 
+if the file is not found). 
+</li><li>handle any input file with a valid syntax, with any level of 
+complexity (you are provided with a set of examples to test your 
+program). </li>
+<li>handle errors in the input file gracefully by provided the user with
+ an error message, mentioning the type of error and the line at which it
+ occured</li>
+<li>handle correctly the exceptions that can be sent by the provided 
+display object, and print explicit error messages to the user before 
+closing the program.
+</li></ul>
+If at demonstration time you need to recompile your program between tests: it's not good!
+
+
+<h2>Provided code: Display class and skeleton program</h2>
+<p>
+You are provided with a basic class to create a window and draw basic 
+shapes, your work will be to integrate with this class in order to draw a
+ scene according to the provided scene description file. 
+You download the code here: 
+</p>
+<a href="http://personal.ee.surrey.ac.uk/Personal/N.Pugeault/cpp/assignment/skeleton.zip">*DOWNLOAD SKELETON CODE*</a>
+
+<p>
+This code contains two makefiles: 
+</p><ul>
+<li><a href="http://personal.ee.surrey.ac.uk/Personal/N.Pugeault/cpp/assignment/Skeleton/makefile_linux"><tt>makefile_linux</tt></a> is using Cairo and Xlib for display, and <b>works on the labs computers</b>. It will not work on systems otherthan linux though (maybe on macs if you're really lucky). </li>
+<li><a href="http://personal.ee.surrey.ac.uk/Personal/N.Pugeault/cpp/assignment/Skeleton/makefile_opencv"><tt>makefile_opencv</tt></a> is using <a href="http://opencv.org/">OpenCV</a>
+ for display, which can be installed on most systems. You may have to 
+change the makefile to indicate where the include and lib directories 
+are located on your system though. <b>It will probably not work on labs computers</b></li>
+</ul>
+You can use either front-end for your program. 
+<p></p>
+
+<p>
+The <a href="http://personal.ee.surrey.ac.uk/Personal/N.Pugeault/cpp/assignment/SkeletonMain.cpp">main program</a> is an example of how the display object can be used to draw on the screen: if you run  <tt>SkeletonCPP2013</tt> you should seen the following image: 
+</p>
+<img src="Design Specification/skeleton_image.png" alt="output of the SkeletonCPP2013 program" width="400">
+<a href="http://personal.ee.surrey.ac.uk/Personal/N.Pugeault/cpp/assignment/images/skeleton_image.png">(file)</a>
+
+<p>The code provides you with two classes <tt>SceneDisplay::CairoDisplay</tt> and <tt>SceneDisplay::OpenCVDisplay</tt>,
+ you can choose the one to use depending on what libraries are supported
+ on your system and use the appropriate makefile. They both implement 
+the same interface defined by the abstract class <a href="http://personal.ee.surrey.ac.uk/Personal/N.Pugeault/cpp/assignment/BaseDisplay.h"><tt>SceneDisplay::BaseDisplay</tt></a>.
+
+</p><h4>Documentation</h4>
+You can find HTML documentation of the provided code <a href="http://personal.ee.surrey.ac.uk/Personal/N.Pugeault/cpp/assignment/Skeleton/doc/html/index.html">here</a> (this has been generated using a tool called Doxygen).
+
+<h2>Scene description files</h2>
+The scene description will be provided as a file that will follow a 
+strict syntax. Your program will need to open the specified file and 
+parse it to draw the required shapes. 
+Here is an example of a simple code: 
+
+<pre>size = 640 480
+
+draw Circle
+	position = 100 100 
+	radius = 50
+	color = 200 0 0 
+done
+</pre>
+
+<h3>Setting a parameter</h3>
+Parameters are set to value always by the same syntax: 
+<pre>	param_name = value1 value2 ...
+</pre>
+where param_name is the name of the parameter to set, and is followed by
+ a single = sign, then by a list of values separated by spaces. The 
+number of spaces is irrelevant. 
+The number of values after the equal sign depend on the parameter. A 
+parameter assignment must be on a single lign, on its own. 
+Example: 
+<pre>position = 100 100
+</pre>
+sets the position parameter to (100,100).
+
+<h4>Setting the image size</h4>
+The image size is the only global parameter, all other parameters are only allowed within a <tt>draw</tt> block.
+It takes two values after the equal sign, for width and height respectively. 
+Example: 
+<pre>size = 640 480
+</pre>
+sets the image size to 640x480.
+
+<h3>Drawing a shape</h3>
+A drawing statement starts with the keyword <tt>draw</tt> followed by the name of the shape, eg, <tt>Circle</tt> or <tt>Rectangle</tt>. 
+The following lines can contain a number of parameters assignment. The list of parameters is shape-specific. 
+The drawing statement is finished by the keyworkd <tt>done</tt> on a line on its own. 
+
+<h4>Circle</h4>
+The <tt>Circle</tt> shape has the following parameters: 
+<ul>
+<li><tt>position</tt>: followed by two values for the X and Y coordinates of the circle's centre. 
+</li><li><tt>radius</tt>: followed by a single value for the circle's radius. 
+</li><li><tt>color</tt>: followed by three values between 0 and 255 for the red, green and blue components, respectively. 
+</li></ul>
+Example: 
+<pre>draw Circle 
+	position = 100 100
+	radius = 50
+	color = 255 0 0
+done
+</pre>
+
+<h4>Rectangle</h4>
+The <tt>Rectangle</tt> shape has the following parameters: 
+<ul>
+<li><tt>position</tt>: followed by two values for the X and Y coordinates of the rectangle's top-left corner.
+</li><li><tt>size</tt>: followed by a two values for the rectangle's radius width and height, respectively.
+</li><li><tt>color</tt>: followed by three values between 0 and 255 for the red, green and blue components, respectively. 
+</li></ul>
+Example: 
+<pre>draw Rectangle 
+	position = 100 100
+	size = 300 50
+	color = 200 0 0
+done
+</pre>
+
+<h3>Defining a complex shape</h3>
+<p>
+You can also define new complex shapes as combinations of draw commands. A definition starts with the keyword <tt>define</tt>
+ followed by the complex name's shape 
+(everything is allowed apart from keywords and existing shapes). The 
+following lines will contain a series of draw statements to draw this 
+complex shape, followed by
+the <tt>done</tt> keyword to finish the definition. 
+</p>
+For example: 
+<pre>define Ring 
+	draw Circle
+		position = 0 0
+		radius = 50
+		color = 255 255 0
+	done
+
+	draw Circle
+		position = 0 0
+		radius = 40
+		color = 0 0 0
+	done
+done
+</pre>
+
+<h4>Using a complex shape</h4>
+Once defined, complex shaped can be drawn exactly like basic shapes. They only allow for one parameter: 
+<ul>
+<li><tt>position</tt>: followed by two values for the X and Y coordinate, will be added to the position of all components of this shape. 
+</li></ul>
+Example: 
+<pre>draw Ring
+	position = 100 100
+done
+</pre>
+will draw the <tt>Ring</tt> shape in the image with an offset of (100,100) pixels. 
+
+
+<h4>Complex shapes of complex shapes</h4>
+Note that new shape can be defined using any valid <tt>draw</tt> statement, including previously defined complex shapes: 
+<pre>define TwoRings
+	draw Ring 
+		position 100 100 
+	done
+	
+	draw Ring
+		position 200 100
+	done
+done
+</pre>
+There is no limit to the number of definitions, so another definition may include the shape <tt>TwoRings</tt>, etc.  
+
+
+<h2>Example scenes</h2>
+In order to test your program, you are provided with a set of example scenes. Note that: 
+
+<ul>
+<li>your program will be assessed on a different set of scenes (that'd be <i>too</i> easy).</li>
+<li>you need to make sure that errors in the scene files produce appropriate error messages.</li>
+</ul>
+
+<h3>circles</h3>
+<p>The first example tests whether your implementation of the <b>Circle</b> primitive works. It is in the file <a href="http://personal.ee.surrey.ac.uk/Personal/N.Pugeault/cpp/assignment/examples/circles.txt"><tt>circles.txt</tt></a>. Here is the expected output:
+</p>
+<img src="Design Specification/circles.png" alt="Output of the circles example" width="400">
+<a href="http://personal.ee.surrey.ac.uk/Personal/N.Pugeault/cpp/assignment/images/circles.png">(file)</a>
+
+<h3>rectangles</h3>
+<p>The second example tests your implementation of the <b>Rectangle</b> primitive. It is in the file <a href="http://personal.ee.surrey.ac.uk/Personal/N.Pugeault/cpp/assignment/examples/rectangles.txt"><tt>rectangles.txt</tt></a>. Here is the expected output: </p>
+<img src="Design Specification/rectangles.png" alt="Output of the rectangles example" width="400">
+<a href="http://personal.ee.surrey.ac.uk/Personal/N.Pugeault/cpp/assignment/images/rectangles.png">(file)</a>
+
+
+<h3>definition</h3>
+<p>The third example tests whether your program can handle <b>definitions</b>. It is in the file <a href="http://personal.ee.surrey.ac.uk/Personal/N.Pugeault/cpp/assignment/examples/definition.txt"><tt>definition.txt</tt></a>. Here is the expected output: </p>
+<img src="Design Specification/definition.png" alt="Output of the definition example" width="400">
+<a href="http://personal.ee.surrey.ac.uk/Personal/N.Pugeault/cpp/assignment/images/definition.png">(file)</a>
+
+<h3>complex scene</h3>
+<p>Finally, the example <a href="http://personal.ee.surrey.ac.uk/Personal/N.Pugeault/cpp/assignment/examples/complex_scene.txt"><tt>complex_scene.txt</tt></a> uses all the functionalities to draw a more elaborate scene: </p>
+<img src="Design Specification/complex_scene.png" alt="Output of the complex_scene example" width="400">
+<a href="http://personal.ee.surrey.ac.uk/Personal/N.Pugeault/cpp/assignment/images/complex_scene.png">(file)</a>
+
+
+
+
+<p>7/11/13 by Nicolas Pugeault</p>
+
+
+
+<style type="text/css"></style>
+</body></html>
